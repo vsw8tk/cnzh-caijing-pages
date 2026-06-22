@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>彩经网 | 信息与观测的稳定界面</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #f7f5f0;
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      line-height: 1.7;
+      color: #2e2c29;
+    }
+
+    /* 深色头图 — 简洁收敛 */
+    .hero {
+      background: #1a1c1f;
+      padding: 3.5rem 1.5rem 2.8rem;
+      text-align: center;
+      color: #e6e3dc;
+      border-bottom: 1px solid #3e3b34;
+    }
+
+    .hero h1 {
+      font-size: 2.4rem;
+      font-weight: 350;
+      letter-spacing: 2px;
+      margin-bottom: 0.6rem;
+    }
+
+    .hero .sub {
+      font-size: 1rem;
+      opacity: 0.72;
+      max-width: 500px;
+      margin: 0 auto;
+      font-weight: 300;
+      border-top: 1px solid #3f3b33;
+      padding-top: 0.75rem;
+      display: inline-block;
+    }
+
+    /* 主内容区 浅色 */
+    .wrapper {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 2.8rem 1.5rem 4rem;
+    }
+
+    /* 文章标题 / 导语风格 */
+    .article-title {
+      font-size: 1.9rem;
+      font-weight: 400;
+      letter-spacing: 0.5px;
+      color: #1f1d19;
+      margin-bottom: 0.3rem;
+      line-height: 1.3;
+    }
+
+    .meta {
+      font-size: 0.9rem;
+      color: #7c7a73;
+      margin-bottom: 1.8rem;
+      border-bottom: 1px solid #e0dcd3;
+      padding-bottom: 0.8rem;
+    }
+
+    .lead {
+      font-size: 1.1rem;
+      background: #f0ede6;
+      padding: 1.2rem 1.5rem;
+      border-left: 4px solid #b0a99b;
+      margin: 1.8rem 0;
+      color: #32302b;
+      border-radius: 0 6px 6px 0;
+    }
+
+    p {
+      margin-bottom: 1.3rem;
+    }
+
+    /* 强调色链接 */
+    a {
+      color: #a1592b;
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: border 0.2s, color 0.2s;
+      font-weight: 450;
+    }
+
+    a:hover {
+      border-bottom: 1px solid #a1592b;
+      color: #7f411e;
+    }
+
+    /* 引用 / 提示块 */
+    .blockquote {
+      background: #f0ede6;
+      padding: 1.2rem 1.6rem;
+      margin: 2rem 0;
+      border-radius: 8px;
+      color: #3f3b33;
+      font-style: normal;
+      border-left: 5px solid #b5a998;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+    }
+
+    .blockquote p {
+      margin-bottom: 0.4rem;
+    }
+
+    .blockquote small {
+      display: block;
+      margin-top: 0.3rem;
+      color: #7a766c;
+      font-size: 0.85rem;
+    }
+
+    /* 特点轻卡片（非重卡片） */
+    .note-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin: 2rem 0 1.5rem;
+    }
+
+    .note-item {
+      background: #f3f0e9;
+      padding: 0.8rem 1.2rem;
+      border-radius: 24px;
+      font-size: 0.95rem;
+      color: #2c2a25;
+      border: 1px solid #e3ddd3;
+    }
+
+    .note-item i {
+      font-style: normal;
+      background: #dad4c9;
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      border-radius: 10px;
+      margin-right: 0.5rem;
+      vertical-align: middle;
+    }
+
+    /* FAQ 摘要（简洁一行式） */
+    .faq-summary {
+      margin: 2.5rem 0 1rem;
+      border-top: 1px solid #dbd6cc;
+      padding-top: 1.8rem;
+    }
+
+    .faq-summary h3 {
+      font-weight: 400;
+      font-size: 1.3rem;
+      margin-bottom: 1rem;
+      color: #2e2a23;
+    }
+
+    .faq-item {
+      padding: 0.6rem 0;
+      border-bottom: 1px dashed #dfd9cf;
+    }
+
+    .faq-q {
+      font-weight: 470;
+      color: #3a3530;
+    }
+
+    .faq-a {
+      margin-top: 0.2rem;
+      color: #5c5750;
+      font-size: 0.95rem;
+    }
+
+    .visit-note {
+      margin-top: 2.2rem;
+      padding: 0.8rem 0;
+      font-size: 0.95rem;
+      color: #5b574d;
+      border-top: 1px solid #e0dbd0;
+      text-align: center;
+    }
+
+    /* 响应式 */
+    @media (max-width: 540px) {
+      .hero h1 { font-size: 1.9rem; }
+      .article-title { font-size: 1.6rem; }
+      .wrapper { padding: 2rem 1rem 3rem; }
+      .lead { padding: 1rem; }
+      .blockquote { padding: 1rem; }
+      .note-grid { gap: 0.6rem; }
+    }
+  </style>
+</head>
+<body>
+  <!-- 深色头图 -->
+  <header class="hero">
+    <h1>彩经网 · 静观</h1>
+    <span class="sub">信息聚合 · 稳定入口</span>
+  </header>
+
+  <main class="wrapper">
+    <!-- 文章标题 -->
+    <h2 class="article-title">一个页面，一处安静起点</h2>
+    <div class="meta">更新于 04 · 2025</div>
+
+    <p>
+      如果你曾面对纷杂的站点感到疲倦，那么一个清晰、克制的页面或许更值得停留。<a href="https://cnzh-caijing.com">彩经网</a>始终将自己定义为信息的整理者，而非喧嚣的制造者。我们更在意如何让每次浏览都围绕真实需求展开，不堆砌浮夸的承诺，也不掩盖数据的本来面目。
+    </p>
+
+    <div class="lead">
+      “一个稳定的入口，往往比一百个闪烁的按钮更值得信赖。” —— 这也是我们设计页面的基本思路。
+    </div>
+
+    <p>
+      从数据呈现到模块划分，结构本身即是引导。没有冗余的弹窗，没有故意拉长的跳转路径。你看得到的每个分类、每个段落，都经过内容优先的考量。作为长期维护的站点，<a href="https://cnzh-caijing.com">彩经网</a>不会用“独家”“必赚”这类词汇来吸引目光，而是希望用平实的叙述让你自行判断：这里是否适合成为你日常获取相关信息的习惯之一。
+    </p>
+
+    <!-- 简洁特点标签 -->
+    <div class="note-grid">
+      <span class="note-item"><i></i> 栏目清晰</span>
+      <span class="note-item"><i></i> 低干扰浏览</span>
+      <span class="note-item"><i></i> 数据可溯源</span>
+      <span class="note-item"><i></i> 无强制注册</span>
+    </div>
+
+    <p>
+      很多朋友会问：你们和普通的财经站点有什么不同？其实答案很简单——我们更愿意做“减法”。既没有密密麻麻的横幅广告，也不要求你留下任何联系方式。你打开页面，找到你关注的部分，然后关闭。这种关系已经足够。
+    </p>
+
+    <!-- 引用提示 (非生硬广告) -->
+    <div class="blockquote">
+      <p>📌 提示：任何信息平台都只是工具，保持独立思考才是长久之道。</p>
+      <small>—— 彩经网·页面说明</small>
+    </div>
+
+    <p>
+      关于内容更新频率：我们坚持稳定更新，但不追求日更的焦虑节奏。每一篇内容都经过简单核实与归类。如果你恰好需要这样的节奏，也许<a href="https://cnzh-caijing.com">彩经网</a>能够成为你书签栏里一个安静的存在。
+    </p>
+
+    <!-- FAQ 摘要 (少量) -->
+    <div class="faq-summary">
+      <h3>一些你可能关心的细节</h3>
+      <div class="faq-item">
+        <div class="faq-q">Q：是否需要登录或付费？</div>
+        <div class="faq-a">完全不需要。所有公开信息均可直接浏览，目前不设付费墙或会员体系。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Q：移动端体验如何？</div>
+        <div class="faq-a">页面已针对手机屏幕做自适应，字体和间距都经过调整，阅读没有压力。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Q：内容来源可靠吗？</div>
+        <div class="faq-a">我们主要整理公开数据与可信渠道，并在页面中注明出处，你可以自行核对。</div>
+      </div>
+    </div>
+
+    <!-- 访问句，自然嵌入 -->
+    <div class="visit-note">
+      🌱 如果你已经读到这儿，不妨记住这个名字——<a href="https://cnzh-caijing.com">彩经网</a>，一个不着急、不打扰的页面。
+    </div>
+  </main>
+</body>
+</html>
